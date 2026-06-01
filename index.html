@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unitat Didàctica - Casa Domòtica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        .card-hover {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Estils especials per als blocs de programació virtuals */
+        .block-container {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .puzzle-tab {
+            position: relative;
+        }
+        .puzzle-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 24px;
+            width: 16px;
+            height: 8px;
+            background: inherit;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            z-index: 10;
+        }
+        .puzzle-notch {
+            position: relative;
+        }
+        .puzzle-notch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 24px;
+            width: 16px;
+            height: 8px;
+            background: #ffffff;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="max-w-5xl mx-auto px-6 py-12">
+            <div class="flex items-center justify-between mb-4">
+                <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">Unitat Didàctica</span>
+                <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold tracking-wide">ID: 2791194</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight" contenteditable="true">
+                Casa Domòtica Intel·ligent
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-2xl" contenteditable="true">
+                Projecte d'automatització d'una llar: inclou un timbre interactiu, il·luminació activada per so i un sistema de control de climatització i qualitat de l'aire.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+        
+        <!-- Left Column: Objectives & Materials -->
+        <div class="lg:col-span-1 space-y-8">
+            
+            <!-- Objectives Box -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                <div class="flex items-center gap-3 mb-4 text-blue-600">
+                    <i class="fas fa-bullseye text-2xl"></i>
+                    <h2 class="text-xl font-bold text-slate-800">Objectius</h2>
+                </div>
+                <ul class="space-y-3 text-slate-600" contenteditable="true">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check text-green-500 mt-1"></i>
+                        <span>Entendre els conceptes bàsics de la domòtica i l'automatització.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check text-green-500 mt-1"></i>
+                        <span>Programar diferents subsistemes: timbre, llum per so i control climàtic.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check text-green-500 mt-1"></i>
+                        <span>Crear subrutines (funcions) per gestionar cada habitació o sistema de la casa.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Materials Box -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                <div class="flex items-center gap-3 mb-4 text-orange-500">
+                    <i class="fas fa-microchip text-2xl"></i>
+                    <h2 class="text-xl font-bold text-slate-800">Materials Necessaris</h2>
+                </div>
+                <ul class="space-y-3 text-slate-600" contenteditable="true">
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        Placa amb microcontrolador (ESP32 / Arduino)
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        Sensor de Temp. i Humitat (DHT-11)
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        Sensor de CO2/TVOC (CCS811)
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        Sensor de So (Analògic)
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        3 x LEDs (Llums de la casa) i 1 x Pulsador
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                        Brunzidor (Buzzer per al timbre)
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Right Column: Instructions, Images and Code -->
+        <div class="lg:col-span-2 space-y-10">
+
+            <!-- Context Section -->
+            <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">1. Descripció del Repte</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed" contenteditable="true">
+                    El repte consisteix en dissenyar i programar el cervell d'una <b>Casa Domòtica</b>. Aquesta casa intel·ligent tindrà tres funcions principals: un <b>timbre a la porta</b> que farà sonar una melodia quan hi hagi visites, un <b>llum automàtic</b> que s'encendrà en detectar un soroll fort (com una picada de mans), i un sistema de <b>control de climatització</b> que ens avisarà si la temperatura, la humitat o els nivells de CO2 de les habitacions no són òptims per al nostre confort.
+                </p>
+                <div class="rounded-xl overflow-hidden shadow-md bg-slate-100">
+                    <img src="image_c9cb07.jpg" alt="La nostra Casa Domòtica" class="w-full h-auto object-cover max-h-[350px]" onerror="this.src='https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                </div>
+            </section>
+
+            <!-- Wiring / Assembly Section -->
+            <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">2. Muntatge i Connexions</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed" contenteditable="true">
+                    Connecta els diferents mòduls de la casa als següents pins de la placa:
+                    <br><br>
+                    • <b>Pin 2:</b> LED d'Alerta (Aire viciat o temperatura extrema)<br>
+                    • <b>Pin 3:</b> LED de Confort (Clima i aire correctes)<br>
+                    • <b>Pin 4:</b> Sensor DHT-11 (Monitoratge de Temp i Humitat a dins de casa)<br>
+                    • <b>Pin 6:</b> Pulsador (El botó del timbre de la porta)<br>
+                    • <b>Pin 7:</b> LED d'Il·luminació (S'encén amb el soroll)<br>
+                    • <b>Pins 12 i 13:</b> Brunzidors (Altaveus del timbre)<br>
+                    • <b>Pin A1:</b> Sensor de So (Detector de sorolls/picades de mans)<br>
+                    • <b>Pins I2C:</b> Sensor de CO2 CCS811
+                </p>
+                <div class="rounded-xl overflow-hidden shadow-md flex justify-center bg-white p-4 border border-slate-200">
+                     <img src="image_c9c7a3.png" alt="Connexions electròniques" class="w-full h-auto object-cover max-h-[300px] rounded" onerror="this.src='https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                </div>
+            </section>
+
+            <!-- Programming Section -->
+            <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">3. Programació amb STEAMakersBlocks</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed" contenteditable="true">
+                    El cervell de la casa té un <b>Bucle principal</b> que s'executa contínuament i s'encarrega de cridar a les subrutines (funcions) que gestionen de forma independent cada espai de la llar.
+                </p>
+                
+                <!-- Main Code Thumbnail (La primera i única captura de codi real!) -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-10">
+                    <h3 class="text-md font-bold text-slate-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-cubes text-blue-500"></i>
+                        <span>Codi Complet del Projecte (Clica per ampliar-lo)</span>
+                    </h3>
+                    
+                    <div onclick="triggerLightbox()" class="rounded-xl overflow-hidden shadow-md border border-slate-200 p-2 bg-slate-50 cursor-pointer hover:shadow-lg hover:ring-2 hover:ring-blue-500 transition relative group">
+                        <!-- Contenidor d'Imatge Real -->
+                        <div class="code-img-container" style="display:none; min-h-[150px]">
+                            <img id="main-code-img" class="w-full h-auto rounded code-img-target transition duration-300 group-hover:scale-[1.01]" alt="Codi complet de STEAMakersBlocks">
+                        </div>
+                        
+                        <!-- Overlay de Zoom visible al passar el ratolí -->
+                        <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 flex items-center justify-center transition-all duration-300">
+                            <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-md transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2">
+                                <i class="fas fa-search-plus"></i> Ampliar Codi Sencer
+                            </span>
+                        </div>
+
+                        <!-- Placeholder de seguretat si no carrega -->
+                        <div class="error-placeholder flex flex-col items-center justify-center bg-red-50 p-6 text-slate-700 rounded text-center border-2 border-dashed border-red-300 py-10">
+                            <i class="fas fa-exclamation-triangle text-4xl mb-3 text-red-500"></i>
+                            <p class="font-bold text-lg text-red-600 mb-2">Imatge del codi no trobada o bloquejada</p>
+                            <div class="text-sm space-y-2 text-left bg-white p-4 rounded border border-red-100 max-w-md mx-auto">
+                                <p><b>Com solucionar-ho:</b></p>
+                                <p>1. Guarda aquest HTML amb el nom de <code>index.html</code>.</p>
+                                <p>2. Comprova que a la mateixa carpeta hi tens la teva imatge de codi anomenada exactament: <code class="bg-slate-100 px-1 py-0.5 rounded text-pink-600">arduinoblocks_1780265892708.jpg</code>.</p>
+                                <p>3. Permet el "contingut bloquejat" si t'ho demana el navegador.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-2">Vista general de tot el programa (Bucle i Funcions). Fes clic a sobre per obrir en pantalla completa.</p>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-800 mb-6">Explicació pas a pas de les Funcions</h3>
+                
+                <div class="space-y-10 block-container">
+                    
+                    <!-- Function 1: Timbre -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h4 class="text-lg font-bold text-blue-600 mb-3 font-sans"><i class="fas fa-bell mr-2"></i>1. Funció TOCA PULSador (El Timbre de la Porta)</h4>
+                        <p class="text-slate-600 mb-6 font-sans font-normal" contenteditable="true">
+                            Aquesta funció controla la porta d'entrada. Si es prem el polsador del Pin 6, es fa sonar el timbre generant dues notes musicals consecutives.
+                        </p>
+                        
+                        <!-- RENDER VIRTUAL DE TIMBRE -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <p class="text-xs text-slate-400 mb-2 font-sans font-normal">Representació del codi:</p>
+                            <div class="bg-red-500 text-white p-3 rounded-lg w-fit min-w-[280px] puzzle-tab">
+                                <span class="bg-red-600 px-2 py-0.5 rounded text-xs mr-2">FUNCIONS</span> definir <span class="underline">TOCA PULSador</span>
+                            </div>
+                            <div class="border-l-8 border-red-500 pl-4 py-2 mt-2 space-y-2">
+                                <div class="bg-amber-500 text-white p-3 rounded-lg w-fit min-w-[250px] puzzle-tab puzzle-notch">
+                                    <span class="bg-amber-600 px-2 py-0.5 rounded text-xs mr-2">LOGICA</span> si <span class="bg-blue-600 px-1.5 py-0.5 rounded text-xs">Pin [6] premut</span>
+                                </div>
+                                <div class="border-l-8 border-amber-500 pl-4 py-2 space-y-2">
+                                    <div class="bg-indigo-600 text-white p-2 rounded-lg w-fit min-w-[210px] puzzle-tab puzzle-notch">
+                                        <span class="bg-indigo-700 px-1.5 py-0.5 rounded text-[10px] mr-1">BRUNZIDOR</span> pin [ 12 ] [ SOL ] [ 500 ms ]
+                                    </div>
+                                    <div class="bg-indigo-600 text-white p-2 rounded-lg w-fit min-w-[210px] puzzle-tab puzzle-notch">
+                                        <span class="bg-indigo-700 px-1.5 py-0.5 rounded text-[10px] mr-1">BRUNZIDOR</span> pin [ 13 ] [ DO ] [ 1000 ms ]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Function 2: SO2 -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h4 class="text-lg font-bold text-amber-500 mb-3 font-sans"><i class="fas fa-lightbulb mr-2"></i>2. Funció SO2 (Il·luminació Automàtica)</h4>
+                        <p class="text-slate-600 mb-6 font-sans font-normal" contenteditable="true">
+                            Llegeix el sensor de so (Pin A1) per detectar picades de mans. Envia el valor al port sèrie i, si se supera el llindar establert, encén el llum LED del Pin 7 de forma automàtica durant 3 segons (3000 ms).
+                        </p>
+                        
+                        <!-- RENDER VIRTUAL DE SO2 -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <p class="text-xs text-slate-400 mb-2 font-sans font-normal">Representació del codi:</p>
+                            <div class="bg-red-500 text-white p-3 rounded-lg w-fit min-w-[280px] puzzle-tab">
+                                <span class="bg-red-600 px-2 py-0.5 rounded text-xs mr-2">FUNCIONS</span> definir <span class="underline">SO2</span>
+                            </div>
+                            <div class="border-l-8 border-red-500 pl-4 py-2 mt-2 space-y-2">
+                                <div class="bg-pink-600 text-white p-2 rounded-lg w-fit min-w-[260px] puzzle-tab puzzle-notch">
+                                    <span class="bg-pink-700 px-1 py-0.5 rounded text-[10px] mr-1">VARIABLES</span> <span class="bg-pink-800 px-1 py-0.5 rounded">valor soroll</span> = Pin analògic [ A1 ]
+                                </div>
+                                <div class="bg-amber-500 text-white p-3 rounded-lg w-fit min-w-[260px] puzzle-tab puzzle-notch">
+                                    <span class="bg-amber-600 px-2 py-0.5 rounded text-xs mr-2">LÒGICA</span> si <span class="bg-pink-800 px-1 py-0.5 rounded text-xs">valor soroll</span> &gt; <span class="bg-pink-800 px-1 py-0.5 rounded text-xs">llindar</span>
+                                </div>
+                                <div class="border-l-8 border-amber-500 pl-4 py-2 space-y-2">
+                                    <div class="bg-blue-600 text-white p-2 rounded-lg w-fit min-w-[220px] puzzle-tab puzzle-notch">
+                                        Escriure pin digital [ 7 ] [ ALT ]
+                                    </div>
+                                    <div class="bg-green-600 text-white p-2 rounded-lg w-fit min-w-[220px] puzzle-tab puzzle-notch">
+                                        Esperar [ 3000 ms ]
+                                    </div>
+                                    <div class="bg-blue-600 text-white p-2 rounded-lg w-fit min-w-[220px] puzzle-tab puzzle-notch">
+                                        Escriure pin digital [ 7 ] [ BAIX ]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Function 3: TEMP -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h4 class="text-lg font-bold text-emerald-600 mb-3 font-sans"><i class="fas fa-leaf mr-2"></i>3. Funció TEMP (Climatització i Confort)</h4>
+                        <p class="text-slate-600 mb-6 font-sans font-normal" contenteditable="true">
+                            Aquesta funció actua com a termòstat i analitzador de salut, avaluant alhora els llindars de Temperatura (15-25ºC), Humitat (40-65%) i nivells de CO2 (máxim 1000ppm).
+                        </p>
+                        
+                        <!-- RENDER VIRTUAL DE TEMP -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <p class="text-xs text-slate-400 mb-2 font-sans font-normal">Representació del codi:</p>
+                            <div class="bg-red-500 text-white p-3 rounded-lg w-fit min-w-[280px] puzzle-tab">
+                                <span class="bg-red-600 px-2 py-0.5 rounded text-xs mr-2">FUNCIONS</span> definir <span class="underline">TEMP</span>
+                            </div>
+                            <div class="border-l-8 border-red-500 pl-4 py-2 mt-2 space-y-2">
+                                <div class="bg-amber-500 text-white p-3 rounded-lg w-fit min-w-[260px] puzzle-tab puzzle-notch">
+                                    <span class="bg-amber-600 px-2 py-0.5 rounded text-xs mr-2">LÒGICA</span> si <span class="text-xs bg-slate-800/40 px-1 rounded">( Fora de rang )</span>
+                                </div>
+                                <div class="border-l-8 border-amber-500 pl-4 py-2 space-y-2">
+                                    <div class="bg-blue-600 text-white p-2 rounded-lg w-fit min-w-[220px] puzzle-tab puzzle-notch">
+                                        Escriure Pin [ 2 ] (LED Alerta) [ ALT ]
+                                    </div>
+                                </div>
+                                <div class="bg-amber-500 text-white p-2 rounded-lg w-fit min-w-[100px] puzzle-tab puzzle-notch">
+                                    sino
+                                </div>
+                                <div class="border-l-8 border-amber-500 pl-4 py-2 space-y-2">
+                                    <div class="bg-blue-600 text-white p-2 rounded-lg w-fit min-w-[220px] puzzle-tab puzzle-notch">
+                                        Escriure Pin [ 3 ] (LED Confort) [ ALT ]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Challenges Section -->
+            <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 bg-blue-50/50">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-rocket text-blue-600 text-2xl"></i>
+                    <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 flex-grow border-blue-200">4. Ampliació i Reptes</h2>
+                </div>
+                <p class="text-slate-600 mb-4" contenteditable="true">
+                    Suggereix als alumnes modificacions per seguir millorant aquesta llar intel·ligent:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-slate-600 ml-4" contenteditable="true">
+                    <li>Afegeix un servomotor a la porta perquè s'obri automàticament en posar una contrasenya.</li>
+                    <li>Utilitza un sensor de llum (LDR) perquè els llums només s'encenguin amb el soroll si és de nit.</li>
+                    <li>Investiga com connectar la casa al WiFi per enviar alertes de temperatura al teu telèfon.</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Visor de Pantalla Completa (Lightbox Modal) -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-slate-950/90 z-50 hidden flex flex-col items-center justify-center p-4 transition-all duration-300 opacity-0" onclick="closeLightbox()">
+        <!-- Botó de tancar -->
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-slate-300 text-3xl focus:outline-none bg-slate-800/60 hover:bg-slate-800/90 w-12 h-12 rounded-full flex items-center justify-center transition-all">
+            <i class="fas fa-times"></i>
+        </button>
+        <!-- Imatge en Gran -->
+        <div class="max-w-5xl max-h-[85vh] overflow-auto rounded-xl bg-white p-2 shadow-2xl relative" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Codi complet ampliat" class="max-w-full h-auto rounded-lg">
+        </div>
+        <p class="text-slate-300 text-sm mt-4 font-sans font-medium bg-slate-900/80 px-4 py-2 rounded-full"><i class="fas fa-info-circle mr-2"></i>Fes clic a fora de la imatge o a la creu per tancar.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-8 text-center">
+        <div class="max-w-5xl mx-auto px-6">
+            <p>Unitat Didàctica creada per l'entorn educatiu. Basada en <span class="text-white">STEAMakersBlocks</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Script de detecció d'imatges i Lightbox -->
+    <script>
+        let globalActiveSrc = '';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Llista de fitxers de codi d'Arduinoblocks que tenim al sistema ordrenat de més nou a més antic
+            const imagesToTry = [
+                'arduinoblocks_1780265892708.jpg',
+                'arduinoblocks_1776727886981.jpg',
+                'arduinoblocks_1776727886981.png'
+            ];
+            
+            let tester = new Image();
+            
+            function checkImage(index) {
+                if (index >= imagesToTry.length) {
+                    console.log("No s'ha trobat cap imatge local d'Arduinoblocks.");
+                    // Deixem els fallbacks d'error actius
+                    document.querySelectorAll('.error-placeholder').forEach(el => el.style.display = 'flex');
+                    document.querySelectorAll('.code-img-container').forEach(el => el.style.display = 'none');
+                    return;
+                }
+                
+                tester.src = imagesToTry[index];
+                tester.onload = () => {
+                    globalActiveSrc = imagesToTry[index];
+                    
+                    // Assignem la font d'imatge i activem la vista per a tots els targets
+                    document.querySelectorAll('.code-img-target').forEach(img => {
+                        img.src = globalActiveSrc;
+                    });
+                    
+                    // Amaguem errors i mostrem els elements reals
+                    document.querySelectorAll('.error-placeholder').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.code-img-container').forEach(el => {
+                        el.style.display = 'block';
+                    });
+                };
+                tester.onerror = () => {
+                    checkImage(index + 1);
+                };
+            }
+            
+            checkImage(0);
+        });
+
+        // Obre el visor de pantalla completa (Lightbox)
+        // Utilitzem l'última versió pujada pel mòdul d'imatges d'Arduinoblocks
+        function triggerLightbox() {
+            if (!globalActiveSrc) {
+                globalActiveSrc = 'arduinoblocks_1780265892708.jpg';
+            }
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            img.src = globalActiveSrc;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        // Tanca el visor
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
